@@ -1,0 +1,23 @@
+<h1 class="mt-3">Restaurant Details</h1>
+
+<ul>
+  <li>Name: <%= @restaurant.name  %></li>
+  <li>Address: <%= @restaurant.address  %></li>
+  <li>Phone Number: <%= @restaurant.phone_number  %></li>
+  <li>Category: <%= @restaurant.category  %></li>
+</ul>
+
+
+<%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-primary m-3"%>
+
+<h2>Review for the restaurant</h2>
+<% if @restaurant.reviews.count > 0 %>
+  <% @restaurant.reviews.each do |review| %>
+      <li>Review: <%= review.content %></li>
+      <li>Rating: <%= review.rating %></li>
+  <% end %>
+<% else %>
+  <p>No review for this restaurant</p>
+<% end %>
+
+<%= link_to "Return to Index", restaurants_path, class: "btn btn-primary m-3"%>
